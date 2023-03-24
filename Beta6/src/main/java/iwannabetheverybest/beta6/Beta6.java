@@ -12,144 +12,96 @@ import java.util.Scanner;
  */
 public class Beta6 {
 
-    public static Scanner input = new Scanner(System.in);
-    public static String again;
-    public static int choose,quantity=1;
-    public static double total=0,pay;
-    public static void menu(){
-     System.out.println("\t\t\t\t   1. Barnuts                         Php. 7.00");
-    System.out.println("\t\t\t\t   2. Ferrero Rocher                   Php. 52.00");
-    System.out.println("\t\t\t\t   3. Hany                              Php. 8.00");
-    System.out.println("\t\t\t\t   4. ChocoMani                         Php. 8.00");
-    System.out.println("\t\t\t\t   5. Cadbury                         Php. 25.00");
-    System.out.println("\t\t\t\t   6. CANCEL                         ");
-     }
-    
-    public static void order(){
-    System.out.println("Press 1 for Barnuts , Press 2 for Ferrero Rocher , Press 3 to Hany , Press 4 for ChocoMani , Press 5 for Cadbury, Press 6 to Cancel");
-    System.out.print("Press you want to buy? :");
-    choose = input.nextInt();
-        //conditions
-        switch (choose) {
-            case 1:
-                System.out.println("You choose Option 1");
-                System.out.print("Quantity of items :");
-                quantity =input.nextInt();
-                total = total +(quantity*45);
-                System.out.println("You want to buy again? ");
-                System.out.println("Press Y for Yes and N for N : ");
-                again = input.next();
-                if(again.equalsIgnoreCase("Y")){
-                    order();//call the method you to create
-                }else{
-                    System.out.println("Enter a payment ");
-                    pay = input.nextDouble();
-                    if(pay <=total){
-                        System.out.println("Not enough payment");
-                    }else{
-                        System.out.println("Total price is " + total);
-                        total = pay-total;
-                        System.out.println("The change is " + total);
-                    }
-                }       break;
-            case 2:
-                System.out.println("You choose Option 2");
-                System.out.print("Quantity of items :");
-                quantity =input.nextInt();
-                total = total +(quantity*40);
-                System.out.println("You want to buy again? ");
-                System.out.println("Press Y for Yes and N for N : ");
-                again = input.next();
-                if(again.equalsIgnoreCase("Y")){
-                    order();//call the method you to create
-                }else{
-                    System.out.println("Enter a payment ");
-                    pay = input.nextDouble();
-                    if(pay <=total){
-                        System.out.println("Not enough payment");
-                    }else{
-                        System.out.println("Total price is " + total);
-                        total = pay-total;
-                        System.out.println("The change is " + total);
-                    }
-                }       break;
-            case 3:
-                System.out.println("You choose Option 3");
-                System.out.print("Quantity of items :");
-                quantity =input.nextInt();
-                total = total +(quantity*30);
-                System.out.println("You want to buy again? ");
-                System.out.println("Press Y for Yes and N for N : ");
-                again = input.next();
-                if(again.equalsIgnoreCase("Y")){
-                    order();//call the method you to create
-                }else{
-                    System.out.println("Enter a payment ");
-                    pay = input.nextDouble();
-                    if(pay <=total){
-                        System.out.println("Not enough payment");
-                    }else{
-                        System.out.println("Total price is " + total);
-                        total = pay-total;
-                        System.out.println("The change is " + total);
-                    }
-                }       break;
-                 case 4:
-                System.out.println("You choose Option 4");
-                System.out.print("Quantity of items :");
-                quantity =input.nextInt();
-                total = total +(quantity*30);
-                System.out.println("You want to buy again? ");
-                System.out.println("Press Y for Yes and N for N : ");
-                again = input.next();
-                if(again.equalsIgnoreCase("Y")){
-                    order();//call the method you to create
-                }else{
-                    System.out.println("Enter a payment ");
-                    pay = input.nextDouble();
-                    if(pay <=total){
-                        System.out.println("Not enough payment");
-                    }else{
-                        System.out.println("Total price is " + total);
-                        total = pay-total;
-                        System.out.println("The change is " + total);
-                    }
-                }       break;
-                case 5:
-                System.out.println("You choose Option 5");
-                System.out.print("Quantity of items :");
-                quantity =input.nextInt();
-                total = total +(quantity*30);
-                System.out.println("You want to buy again? ");
-                System.out.println("Press Y for Yes and N for N : ");
-                again = input.next();
-                if(again.equalsIgnoreCase("Y")){
-                    order();//call the method you to create
-                }else{
-                    System.out.println("Enter a payment ");
-                    pay = input.nextDouble();
-                    if(pay <=total){
-                        System.out.println("Not enough payment");
-                    }else{
-                        System.out.println("Total price is " + total);
-                        total = pay-total;
-                        System.out.println("The change is " + total);
-                    }
-                }       break;
-            case 6:
-                System.exit(0);//close program
-            default:
-                System.out.println("Choose 1 to 4 only!");
-                order();
-                break;
-        }
-    }
-    public static void main(String[] args) {
-       menu();
-       order();
- 
-}
+      
+     
 
-}
-    
- 
+           
+    	public static int total_quantity=0;
+    	public static String[] products = {null, "1.) Hawaiian Classic 169.00",
+    	 											"2.) Domino's Deluxe 419.00",
+    	 											"3.) Extravagazza 469.00",
+    	 											"4.) Pizza Carbonara 469.00"};
+    	public static int[] product_price ={0,169,419,469,469};
+    	public static int[] final_qty=new int[5];
+     
+    	public static void main(String[] args)
+    	{   
+    		Scanner s = new Scanner(System.in);
+    		int choose, quantity;
+    		int p1=0;
+    		int p2=0;
+    		int p3=0;
+    		int p4=0;
+    		char decision;
+    		System.out.println("Welcome to Dominos Pizza, please choose any from the menu there..");
+    		do
+    		{
+     
+    			for(int i = 0; i < products.length; i++)
+    			{
+    				if(products[i] != null)
+    				System.out.println(products[i]);
+    			}
+     
+    			System.out.print("Choose any item: ");
+    			choose=s.nextInt();
+     
+    			System.out.print("How many orders? ");
+    			quantity=s.nextInt();
+     
+    			switch(choose)
+    			{
+    				case 1:
+    				p1 += quantity;
+    				final_qty[1]=p1;
+    				break;
+     
+    				case 2:
+    				p2 += quantity;
+    				final_qty[2]=p2;
+    				break;
+     
+    				case 3: 
+    				p3 += quantity;
+    				final_qty[3]=p3;
+    				break;
+     
+    				case 4: 
+    				p4 += quantity;
+    				final_qty[4]=p4;
+    				break;
+    			}
+    			System.out.print("Would you like to order again? Y/N / y/n: ");	
+    			decision=s.next().charAt(0);
+    		}while(decision != 'n' && decision != 'N');
+     
+    		System.out.println("==Final Cart==");
+    		System.out.println("\t\\Item\t\\Qty\t\\Total");
+    		int sum=0;
+    		for(int i=0; i < final_qty.length; i++)
+    		{
+    			if(final_qty[i] != 0)
+    			{
+    				System.out.println(products[i]+"\\"+final_qty[i]+"\\"+final_qty[i]*product_price[i]);
+    				sum = sum + final_qty[i]*product_price[i];
+    			}
+    		}
+    		System.out.println("Total Purchased items: "+(p1+p2+p3+p4));
+    		System.out.println("Total Purchase: "+sum);
+    		int payment=0;
+                
+                
+                
+                                    do
+    		{
+    		System.out.print("Enter Payment: ");
+                                   payment=s.nextInt();
+                                   if (payment < sum)
+                                   System.out.println("Not enough payment, pay up");
+                                   }
+                                    while(sum >= payment);
+    		System.out.println("Thank you for buying! here's your change: "+(payment-sum));	
+                              
+    	}	
+     
+    }
